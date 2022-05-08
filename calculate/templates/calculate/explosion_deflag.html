@@ -1,0 +1,82 @@
+{% extends 'head_page/main.html' %}
+{% load static %}
+
+{% block main_section %}
+  <script type="text/javascript" src={% static "calculate/js/explosion_deflag.js" %}></script>
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+  <div class="container">
+    <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="col-10">
+        <h3 class="mt-3 mb-3">Взрыв ГПВС (методика: Приказ Ростехнадзора №137)</h3>
+        <div id="chartdiv" style="width: auto; height: 500px" class="map_brd mt-3"></div>
+        <div class="form-group" style="width: auto; height: auto">
+
+          <label for="inp_1"><b>Класс вещества по степени чувствительности</b></label>
+          <select class="browser-default custom-select" id="select_type_sub">
+            <option selected="true" disabled="disabled" >Выберете класс вещества</option>
+            <option value="1">Класс 1. Особо чувствительные вещества</option>
+            <option value="2">Класс 2. Чувствительные вещества</option>
+            <option value="3">Класс 3. Среднечувствительные вещества</option>
+            <option value="4">Класс 4. Слабочувствительные вещества</option>
+          </select>
+
+          <label for="inp_2"><b>Классификация окружающей территории</b></label>
+          <select class="browser-default custom-select " id="select_view_space">
+            <option selected="true" disabled="disabled">Выберете вид окружающего пространства</option>
+            <option value="1">Вид 1. Наличие длинных труб, полостей, каверн, заполненных горючей смесью... </option>
+            <option value="2">Вид 2. Сильно загроможденное пространство: наличие полузамкнутых объемов,
+              высокая плотность размещения технологического оборудования...</option>
+            <option value="3">Вид 3. Средне загроможденное пространство:
+              отдельно стоящие технологические установки, резервуарный парк.</option>
+            <option value="4">Вид 4. Слабо загроможденное и свободное пространство.</option>
+          </select>
+
+          <label for="inp_3"><b>Введите массу испарившегося опасного вещества, кг</b></label>
+          <input type="text" class="form-control" id="massa">
+          <label for="inp_4"><b>Введите теплоту сгорания, кДж/кг</label>
+          <input type="text" class="form-control" id="Qsg">
+
+        <!-- Type sigma -->
+          <label for="inp_5"><b>Укажите тип смеси:</b></label>
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="defaultChecked" name="type_sigma" checked>
+            <label class="custom-control-label" for="defaultChecked">Газовая смесь</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="defaultUnchecked" name="type_sigma">
+            <label class="custom-control-label" for="defaultUnchecked">Гетерогенная смесь</label>
+          </div>
+        <!-- Type cloud -->
+          <label for="inp_5"><b>Укажите тип облака:</b></label>
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="defaultChecked1" name="type_cloud" checked>
+            <label class="custom-control-label" for="defaultChecked1">Облако лежит на земле (двойной энергозапас)</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="defaultUnchecked1" name="type_cloud">
+            <label class="custom-control-label" for="defaultUnchecked1">Облако <mark><b>не</b></mark> лежит на земле</label>
+          </div>
+
+        </div>
+        <button onclick="draw_graph()" class="btn btn-primary" >Расчтет</button>
+        <hr>
+        <h4>Карта зон действия поражающих факторов</h4>
+        <h5><mark>Правая клавиша мыши (КМ) - добавить зоны, левая КМ - удалить</mark></h5>
+        <div id="map" class="map_brd mt-5 mb-5"></div>
+        <hr>
+        <h4>Дополнительные графики</h4>
+        <h5>График пробит-функции:</h5>
+        <div id="chartdiv_probit" style="width: auto; height: 500px" class="map_brd mt-3"></div>
+        <hr>
+        <h5>График вероятности поражения:</h5>
+        <div id="chartdiv_probability" style="width: auto; height: 500px" class="map_brd mt-3 mb-5"></div>
+      </div>
+      <div class="col-1">
+      </div>
+    </div>
+  </div>
+{% endblock main_section %}

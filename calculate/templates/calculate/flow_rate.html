@@ -1,0 +1,49 @@
+{% extends 'head_page/main.html' %}
+{% load static %}
+
+{% block main_section %}
+  <script type="text/javascript" src={% static "calculate/js/flow_rate.js" %}></script>
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="col-10">
+        <h3 class="mt-3 mb-3">Определение аварийного расхода</h3>
+        <div id="chartdiv" style="width: auto; height: 500px" class="map_brd mt-3"></div>
+        <div class="form-group mt-3" style="width: auto; height: auto">
+          <!-- Type phase -->
+          <label for="inp_1"><b>Укажите фазовое состояние вещества:</b></label>
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input type_phase" id="defaultChecked" onChange="Selected(this)" value="liguid" name="type_phase" checked>
+            <label class="custom-control-label" for="defaultChecked">Жидкость</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input type_phase" id="defaultUnchecked" onChange="Selected(this)" name="type_phase" value="gas">
+            <label class="custom-control-label" for="defaultUnchecked">Газ</label>
+          </div>
+          <div class="data">
+            <label for="inp_1"><b>Введите диаметр предпологаемого деффектного отверстия, мм:</b></label>
+            <input type="text" class="form-control" id="diametr_hole">
+            <label for="inp_2"><b>Введите давление в оборудовании, МПа</b></label>
+            <input type="text" class="form-control" id="pressure">
+            <label for="inp_3"><b>Введите плотность вещества, кг/м<sup>3</sup>:</b></label>
+            <input type="text" class="form-control" id="density">
+            <div class="mt-3 mb-3 gamma_div" id="gamma_div">
+              <label for="inp_4"><b>Введите показатель адиабаты газа, - </b></label>
+              <input type="text" class="form-control" id="gamma_gas" name="gas">
+            </div>
+          </div>
+        </div>
+        <button onclick="draw_graph()" class="btn btn-primary mb-5" >Расчтет</button>
+        <hr>
+
+      </div>
+      <div class="col-1">
+      </div>
+    </div>
+  </div>
+{% endblock main_section %}

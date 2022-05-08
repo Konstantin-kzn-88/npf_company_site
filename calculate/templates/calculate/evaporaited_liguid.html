@@ -1,0 +1,32 @@
+{% extends 'head_page/main.html' %}
+{% load static %}
+
+{% block main_section %}
+  <script type="text/javascript" src={% static "calculate/js/evaporaited_liguid.js" %}></script>
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+  <div class="container">
+  <div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-10">
+      <h3 class="mt-3 mb-3">Определение массы испарившегося вещества из пролива</h3>
+      <h4 class="mt-3 mb-3">Ненагретые жидкости</h4>
+      <div id="chartdiv" style="width: auto; height: 500px" class="map_brd mt-3"></div>
+      <div class="form-group" style="width: auto; height: auto">
+        <label for="inp_1"><b>Введите давление насыщенного пара, кПа:</b></label>
+        <input type="text" class="form-control" id="Pn">
+        <label for="inp_2"><b>Введите молярную массу, кг/кмоль:</b></label>
+        <input type="text" class="form-control" id="mol_massa">
+        <label for="inp_3"><b>Введите площадь пролива, м<sup>2</sup>:</b></label>
+        <input type="text" class="form-control" id="S_spil">
+        <p>Прим.: масса испарившегося вещества не может быть больше массы вещества в оборудовании.</p>
+      </div>
+      <button onclick="draw_graph()" class="btn btn-primary mb-5" >Расчтет</button>
+    </div>
+    <div class="col-1">
+    </div>
+  </div>
+  </div>
+{% endblock main_section %}
