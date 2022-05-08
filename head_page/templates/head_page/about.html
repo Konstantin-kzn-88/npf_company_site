@@ -1,0 +1,37 @@
+
+{% extends 'head_page/main.html' %}
+{% load static %}
+
+{% block main_section %}
+  <h3 class="mt-4">Научные интересы</h3>
+  <div class="row">
+    <div class="col-5 mt-2">
+          <img src='{% static "head_page/img/curtain.jpg" %}' class="rounded float-left img-thumbnail">
+          <img src='{% static "head_page/img/curtain_2.jpg" %}' class="rounded float-left img-thumbnail">
+    </div>
+    <div class="col-6 mt-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Исследование защитных свойств водных завес при выбросах аварийных веществ</h5>
+          <p class="card-text">
+              Одним из инженерных средств защиты, применяемых на взрывопожароопасных и химически опасных производственных объектах, является водяная завеса.
+              Нами в настоящее время собрана  экспериментальная установка,
+              включающая в себя: источник выброса (масса аммиака в баллоне 20 кг), водяную завесу, снабженную форсунками фирмы BETE марки TF16FCN,
+              средства измерения концентрации для проведения натурных экспериментов на открытой площадке. Аппробируется математическая модель взаимодействия
+              водяной завесы и токсичного водорастворимого газа (аммиака) на основе пакета гидродинамического анализа ANSYS FLUENT.
+            </p>
+            <p>Установку собирали:</p>
+            <div>
+              <p class="card-text">Доцент кафедры «Машин и аппаратов химических производств», к.т.н.: <a href="http://www.kstu.ru/emp_detail.jsp?id=385&idparent=0">Галеев А.Д.</a></p>
+            </div>
+            <div>
+              <p class="card-text">Старший преподаватель кафедры "Промышленной безопасности": <a href="https://www.kstu.ru/emp_detail.jsp?id=49611&idparent=1810">Кузнецов К.М.</a></p>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-1">
+    </div>
+  </div>
+  </div>
+{% endblock main_section %}

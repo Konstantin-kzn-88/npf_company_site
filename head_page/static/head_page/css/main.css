@@ -1,0 +1,13 @@
+span.classy {
+  background-color: DodgerBlue;
+}
+
+/* calculate */
+#map {
+    width: auto; height: 500px;
+}
+.map_brd {
+ border: 2px solid silver; /* Параметры границы */
+}
+
+.gamma_div {display:none;}

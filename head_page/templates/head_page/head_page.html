@@ -1,0 +1,41 @@
+
+{% extends 'head_page/main.html' %}
+{% load static %}
+
+{% block main_section %}
+
+<div class="row">
+  <div class="col-5 mt-5">
+        <img src='{% static "head_page/img/photo_me.jpg" %}' class="rounded float-left img-thumbnail">
+  </div>
+  <div class="col-6 mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Об организации</h5>
+        <p class="card-text">ИП Кузнецов Константин Михайлович</p>
+        <p class="card-text"><b>Высшее образование:</b>
+            Казанский государственный
+            технологический университет. Специальность:
+            Безопасность жизнедеятельности.
+            Специализация: Безопасность технологических
+            процессов и производств. Квалификация:
+            инженер.
+          </p>
+          <p class="card-text"><b>Аспирантура:</b>
+              Казанский государственный
+              технологический университет. Специальность:
+              Специальность 05.26.03 Пожарная и промышленная безопасность.
+          </p>
+          <p class="card-text"><b>Преподавательская деятельность:</b>
+              Казанский государственный
+              технологический университет. Кафедра "Промышленной безопасности". Старший преподаватель.
+          </p>
+          <a href="https://www.kstu.ru/emp_detail.jsp?id=49611&idparent=1810" class="stretched-link">Страничка преподавателя</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-1">
+  </div>
+</div>
+</div>
+{% endblock main_section %}

@@ -1,0 +1,34 @@
+{% extends 'head_page/main.html' %}
+{% load static %}
+
+{% block main_section %}
+  <script type="text/javascript" src={% static "head_page/js/map.js" %}></script>
+  <div class="row">
+    <div class="col-7 mt-5">
+      <div id="map" class="card"></div>
+    </div>
+    <div class="col-4 mt-5">
+
+      <div class="card">
+        <!-- <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap"> -->
+        <div class="card-body">
+          <h4 class="card-title">Контакты</h4>
+          <p class="card-text">
+            Наименование: Индивидуальный предприниматель Кузнецов К.М.
+          </p>
+          <p class="card-text">
+            Телефон: 8 (917) 265 60 91
+          </p>
+          <p class="card-text">
+            Email: kuznetsovkm@yandex.ru
+          </p>
+          <a href='{% static "head_page/file/partner_card.docx" %}' class="btn btn-primary">Карта партнера</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-1">
+    </div>
+  </div>
+  </div>
+{% endblock main_section %}
