@@ -1,0 +1,81 @@
+{% extends 'head_page/main.html' %}
+{% load static %}
+
+{% block main_section %}
+  <script type="text/javascript" src={% static "calculate/js/light_gas_dispersion_inst_source.js" %}></script>
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="col-10">
+        <h3 class="mt-3 mb-3">Дисперсия "легкого газа" при мгновенном выбросе</h3>
+        <div id="chartdiv" style="width: auto; height: 500px" class="map_brd mt-3 mr-2"></div>
+        <div class="form-group mt-2" style="width: auto; height: auto">
+          <label class="mt-2" for="inp_1"><b>Введите скорость ветра (на высоте 10 м):</b></label>
+          <input type="number"  placeholder="" class="form-control" id="u_ref">
+          <label class="mt-2" for="inp_2"><b>Введите температуру воздуха, град.С:</b></label>
+          <input type="number" placeholder="" class="form-control" id="Ta"> <!-- temperature ambient -->
+          <label class="mt-2" for="inp_3"><b>Введите температуру газа, град.С:</b></label>
+          <input type="number" placeholder="" class="form-control" id="Ts"> <!-- temperature source -->
+          <label class="mt-2" for="inp_4"><b>Введите массу мгновенного выброса, кг:</b></label>
+          <input type="number" placeholder="" class="form-control" id="mass_gas"> <!-- mass source -->
+          <label class="mt-2" for="inp_5"><b>Введите высоту выброса, м:</b></label>
+          <input type="number" placeholder="" class="form-control" id="hs"> <!-- height source -->
+          <label class="mt-2" for="inp_6"><b>Введите плотность выброса, кг/м3:</b></label>
+          <input type="number" placeholder="" class="form-control" id="po_gas"> <!-- density source -->
+          <!-- Type area -->
+          <label class="mt-2" for="inp_7"><b>Укажите тип застройки:</b></label>
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="defaultChecked2" name="type_area" checked>
+            <label class="custom-control-label" for="defaultChecked2">Городская застройка</label>
+          </div>
+          <div class="custom-control custom-radio mt-2">
+            <input type="radio" class="custom-control-input" id="defaultUnchecked2" name="type_area">
+            <label class="custom-control-label" for="defaultUnchecked2">Загородная застройка</label>
+          </div>
+          <!-- Type night/day -->
+          <label class="mt-2" for="inp_8"><b>Укажите тип время суток:</b></label>
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="defaultChecked1" name="times_of_day" checked>
+            <label class="custom-control-label" for="defaultChecked1">День</label>
+          </div>
+          <div class="custom-control custom-radio mt-2">
+            <input type="radio" class="custom-control-input" id="defaultUnchecked1" name="times_of_day">
+            <label class="custom-control-label" for="defaultUnchecked1">Ночь</label>
+          </div>
+          <!-- Relative Cloud Coverage -->
+          <label class="mt-2" for="inp_9"><b>Укажите степень облачности:</b></label><br>
+          <label class="mt-2" for="inp_9">(0- нет облаков, 8 - все небо закрыто облаками)</label>
+          <form onsubmit="return false" oninput="level.value = flevel.valueAsNumber">
+            <input name="flevel" id="flying" type="range" min="0" max="8" value="0" step="1">
+            <output for="flying" name="level" id="cloud_coverage">0</output>
+          </form>
+          <label class="mt-2" for="inp_5"><b>Введите контролируемое растояние, м:</b></label>
+          <input type="number" placeholder="" class="form-control" id="x_control"> <!-- height source -->
+          <label class="mt-2" for="inp_6"><b>Введите контролируемое время, с:</b></label>
+          <input type="number" placeholder="" class="form-control" id="time_control"> <!-- density source -->
+
+        </div>
+        <button onclick="draw_graph()" class="btn btn-primary" >Расчтет</button>
+        <hr>
+        <h4>Карта зон действия поражающих факторов</h4>
+        <h5><mark>Правая клавиша мыши (КМ) - добавить зоны, левая КМ - удалить</mark></h5>
+        <div id="map" class="map_brd mt-5 mb-5"></div>
+        <hr>
+        <h4>Дополнительные графики</h4>
+        <h5>График зависимости концентрации от времени, на контролируемом растоянии:</h5>
+        <div id="chartdiv_x_control" style="width: auto; height: 500px" class="map_brd mt-3"></div>
+        <hr>
+        <h5>График зависимотсти концентрации от расстояния, (при контролируемом времени, с):</h5>
+        <div id="chartdiv_time_control" style="width: auto; height: 500px" class="map_brd mt-3"></div>
+        <hr>
+      </div>
+      <div class="col-1">
+      </div>
+    </div>
+  </div>
+{% endblock main_section %}
